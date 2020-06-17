@@ -1,2 +1,2 @@
-# Symulacja rozprzestrzeniania się wirusa SARS-COV-2
+# Symulacja rozprzestrzeniania się wirusa SARS-CoV-2
 
