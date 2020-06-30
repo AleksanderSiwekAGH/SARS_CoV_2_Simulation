@@ -75,11 +75,13 @@ fFun=@(x,t) x(1).*exp(-(x(2)*(t-x(3))).^2);
 %% Robocze przykładowe wyświetlenie ilości zdrowych osób od czasu
 % figure 
 % plot(t,H,'b');
+ plot(t,D,'b','Parent', app.Diffdeathsnum);
+ plot(t,REC,'b','Parent', app.Diffrecnum);
 % %%%Robocze przykładowe wyświetlenie wskaźnika wyzdrowienia z kwarantanny i
 % %%śmiertelności
 % figure
 % plot(t,oFun(ot,t),'b',t,fFun(ft,t),'k')
-% legend('Współczynnik wyzdrowienia osoby z karantanny','Współczynnik śmiertelności','location','best');
+% legend('Współczynnik wyzdrowienia osoby z kwarantanny','Współczynnik śmiertelności','location','best');
 % xlabel('Time (days)')
 % set(gcf,'color','w')
 % 
