@@ -6,6 +6,10 @@ X = app.FranceSize.Value;
 Y = X;
 testingRate = app.FranceTestRate.Value;
 testingSickRate = testingRate;
+howMuchPatientsZero = app.FranceNumberOfPatientsZero.Value;
+probabilityOfInfection = app.FranceProbabilityOfInfection.Value;
+avgFatalityRate = app.FranceFatalityRate.Value;
+seriousCases = app.FranceSeriousCases.Value;
 
 %% Generate initial state
 % Each field has it's value, left digit = Q1, right digit = Q2
@@ -61,7 +65,8 @@ totalTests = zeros(1, maxIter);
 % Simulation loop
 visualize(f1, Q1, f2, Q2, 0, X, Y);
 iters = 1:maxIter;
-for iter = iters
+iter = 1;
+while ~app.FranceStop.Value && iter <= maxIter
     % Init daily values
     todaysConfirmedCases = 0;
     todaysDeaths = 0;
@@ -295,6 +300,7 @@ for iter = iters
     end
     
     visualize(f1, Q1, f2, Q2, iter/itersPerDay, X, Y);
+    iter = iter + 1;
 end
 
 

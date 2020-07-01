@@ -40,6 +40,7 @@ D0=app.D0.Value;
 % lt=[0.01 0.1 100]; % wskaźnik wyleczeń osób ze szpitala(zależy od czasu)
 %ft=[0.001 0.01 30]; %śmiertelność(zależy od czasu)
 
+testRate = app.ModelTestRate.Value; %wykorzystywane w sterowaniu
 a=app.a.Value; %wskaźnik zmiany zachowania na niestosowanie środków ochrony
 b=app.b.Value; %wskaźnik zmiany zachowania na stosowanie środków ochrony
 alfa=app.alfa.Value; %wskaźnik zachorowania osoby która nie stosowała środków ochrony
@@ -70,16 +71,18 @@ oFun=@(x,t) x(1)./(1+exp(-x(2)*(t-x(3))));
 lFun=@(x,t) x(1)./(1+exp(-x(2)*(t-x(3))));
 fFun=@(x,t) x(1).*exp(-(x(2)*(t-x(3))).^2);
 
-[H,NSM,SP,INF,IAS,Q,INH,REC,D] = solving_equations(a,b,alfa,beta,gamma,c,d,lambda,ot,lt,ft,Npop,SP0,NSM0,INF0,IAS0,REC0,Q0,INH0,D0,t,oFun,lFun,fFun);
+[H,NSM,SP,INF,IAS,Q,INH,REC,D] = solving_equations(testRate,a,b,alfa,beta,gamma,c,d,lambda,ot,lt,ft,Npop,SP0,NSM0,INF0,IAS0,REC0,Q0,INH0,D0,t,oFun,lFun,fFun);
 
 %% Robocze przykładowe wyświetlenie ilości zdrowych osób od czasu
 % figure 
 % plot(t,H,'b');
+ plot(t,D,'b','Parent', app.Diffdeathsnum);
+ plot(t,REC,'b','Parent', app.Diffrecnum);
 % %%%Robocze przykładowe wyświetlenie wskaźnika wyzdrowienia z kwarantanny i
 % %%śmiertelności
 % figure
 % plot(t,oFun(ot,t),'b',t,fFun(ft,t),'k')
-% legend('Współczynnik wyzdrowienia osoby z karantanny','Współczynnik śmiertelności','location','best');
+% legend('Współczynnik wyzdrowienia osoby z kwarantanny','Współczynnik śmiertelności','location','best');
 % xlabel('Time (days)')
 % set(gcf,'color','w')
 % 

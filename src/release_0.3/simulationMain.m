@@ -143,10 +143,12 @@ function [] = simulationMain(app)
 
     subplot(2, 3, 2)
     plot(iterations, deaths)
+    plot(iterations, deaths,'b','Parent', app.CAdeathsnum)
     title("Deaths")
 
     subplot(2, 3, 3)
     plot(iterations, recovered)
+    plot(iterations, recovered,'b','Parent', app.CArecnum)
     title("Recovered")
 
     subplot(2, 3, 4)
