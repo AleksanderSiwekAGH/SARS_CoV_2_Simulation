@@ -62,13 +62,13 @@ Q2_trans = [0 1 1 1 0 0 0 0
 
  %% Probabilities and other assumptions
  
- timeConstant = 10; % Days in which (on average) things escalate
- probabilityOfInfection = 5; % [%]
+%  timeConstant = 10; % Days in which (on average) things escalate
+%  probabilityOfInfection = 5; % [%]
  recoveryDay = 10; % Average time it takes to recover
  dieOrRecoverDay = 10;
- avgFatalityRate = 1; % [%]
- howMuchPatientsZero = 10;
- seriousCases = 5; % [%]
+%  avgFatalityRate = 1; % [%]
+%  howMuchPatientsZero = 10;
+%  seriousCases = 5; % [%]
 %  testingRate = 60; % [%]
 %  testingSickRate = 60; % [%]
  testingNotSickThreshold = 0.5;
