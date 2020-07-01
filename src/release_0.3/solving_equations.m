@@ -1,4 +1,4 @@
-function [H,NSM,SP,INF,IAS,Q,INH,REC,D] = solving_equations(a,b,alfa,beta,gamma,c,d,lambda,ot,lt,ft,Npop,SP0,NSM0,INF0,IAS0,REC0,Q0,INH0,D0,t,oFun,lFun,fFun)
+function [H,NSM,SP,INF,IAS,Q,INH,REC,D] = solving_equations(testRate,baseA,baseB,alfa,beta,gamma,c,d,lambda,ot,lt,ft,Npop,SP0,NSM0,INF0,IAS0,REC0,Q0,INH0,D0,t,oFun,lFun,fFun)
 
 %Warunki początkowe
 N = numel(t);
@@ -26,6 +26,13 @@ f=fFun(ft, t);
 
 % obliczanie  ODE 
 for ii=1:N-1
+    % Sterowanie poprzez zmiany współczynników a i b
+    infected = 100; % TODO tutaj trzeba zsumować wszystkie stany infected
+    maxPop = 1000; % TODO ile tego jest?
+    [aModifier, bModifier] = countAandB(testRate, infected, maxPop);
+    a = baseA * aModifier; % TODO  
+    b = baseB * bModifier; % TODO
+    
     A = getA(alfa,beta,c,gamma,d,lambda,o(ii),l(ii),f(ii));
     HINF = Y(1,ii)*Y(4,ii);
     F = zeros(9,1);
@@ -78,4 +85,11 @@ D = Y(9,1:N);
         % wynik
         Y = Y + (1/6)*(k_1+2*k_2+2*k_3+k_4)*dt;
     end
+end
+
+function [a, b] = countAandB(testRate, infected, maxPop)
+    T = 0.08;
+    fun = @(t) 0.9 - exp(-t/T);
+    a = fun(testRate*infected/maxPop);
+    b = 1 - a;
 end
