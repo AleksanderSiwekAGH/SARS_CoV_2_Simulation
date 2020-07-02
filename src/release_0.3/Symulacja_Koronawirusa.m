@@ -95,6 +95,7 @@ for n=1:liczba_dni
     %zmienne pomocnicze do obliczania ilości testów
     liczba_testow=0;   
     liczba_testow_pozytywnych=0;
+    liczba_wyzdrowialych=0;
     %2
     
    
@@ -308,9 +309,9 @@ for n=1:liczba_dni
        l=0;
        if stan(w,k)==in_hospital
            l=n;
-           prob_of_recovered=prob_of_recovered+5;
+           prob_of_recovered=prob_of_recovered+4;
            if mod(l,16)==0
-               prob_of_recovered=prob_of_recovered+10;
+               prob_of_recovered=prob_of_recovered+14;
            end
        end
        prob_of_recovered=prob_of_recovered*3;
@@ -531,7 +532,7 @@ num8=rand(1)*30000;
                        if stan(w,k)~=recovered_protecting_others
                                probability_of_death=1;                
                        if stan(w,k)~= in_hospital && ( stan(w,k)==sick_no_symptoms_no_sec_measures || stan(w,k)==sick_no_symptoms_infecting || stan(w,k)==sick_symptoms_no_sec_measures || stan(w,k)==sick_symptoms_infecting || stan(w,k)==in_quarantine_no_sec_measures)
-                            probability_of_death=probability_of_death+20;
+                            probability_of_death=probability_of_death+19;
                        end
                        if stan(w,k)==in_quarantine_self_protecting
                        probability_of_death=probability_of_death-5;
@@ -557,13 +558,13 @@ num8=rand(1)*30000;
                if stan(w,k)~= sick_symptoms_infecting
                   
                    if healthy_protecting_others_neighbors>=1
-                    probability_of_survival= probability_of_survival+10;
+                    probability_of_survival = probability_of_survival+5;
                    end
                    if   recovered_protecting_others_neighbors>=1
-                       probability_of_survival= probability_of_survival+10;
+                       probability_of_survival = probability_of_survival+5;
                    end
                    if stan(w,k)==in_hospital 
-                       probability_of_survival= probability_of_survival+20;
+                       probability_of_survival= probability_of_survival+15;
                    end
                    if stan(w,k)==in_quarantine_self_protecting
                        probability_of_survival= probability_of_survival+5;
@@ -702,12 +703,31 @@ if sick_symptoms_no_sec_measures_neighbors>=2  ||  sick_symptoms_infecting_neigh
 
 end
 end 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+if stan(w,k)==14
+    app.numDead.Value=app.numDead.Value+1;
+end
+
+if stan(w,k)==3
+    app.numRec.Value=app.numRec.Value+1;
+end
+
+if stan(w,k)==13
+    app.numRec.Value=app.numRec.Value+1;
+end
+
+if stan(w,k)==15
+    app.numRec.Value=app.numRec.Value+1;
+end
    
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
              
       
          end
     end
+    app.madeTests.Value=liczba_testow;
+    app.positiveTests.Value=liczba_testow_pozytywnych;
+    
     
     %3
     [C1,D1] = find(kolejny_stan==sick_symptoms_no_sec_measures);
@@ -855,7 +875,7 @@ end
         stan(C15(m),D15(m)) = kolejny_stan(C15(m),D15(m));
     end 
     
- 
+   
     
      %tymczasowy warunek wyjscia
     hold off

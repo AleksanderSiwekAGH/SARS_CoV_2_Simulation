@@ -27,9 +27,8 @@ f=fFun(ft, t);
 % obliczanie  ODE 
 for ii=1:N-1
     % Sterowanie poprzez zmiany współczynników a i b
-    infected = 100; % TODO tutaj trzeba zsumować wszystkie stany infected
-    maxPop = 1000; % TODO ile tego jest?
-    [aModifier, bModifier] = countAandB(testRate, infected, maxPop);
+    infected = Y(4,ii) + Y(5,ii) + Y(6,ii) + Y(7,ii); % TODO tutaj trzeba zsumować wszystkie stany infected
+    [aModifier, bModifier] = countAandB(testRate, infected, Npop);
     a = baseA * aModifier; % TODO  
     b = baseB * bModifier; % TODO
     
