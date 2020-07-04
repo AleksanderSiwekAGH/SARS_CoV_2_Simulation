@@ -12,7 +12,7 @@ function [] = simulationMain(app)
 
     population = 5368000;
     rawData = readtable("Norway_coronaVirusData_utf8.csv");
-    startInfectiousness = 0.04;
+    startInfectiousness = 0.035;
 
     startIsolationStates = [0.76 0.19 0.02 0.005 0.005];
     isolationMults = [1 0.5 0.2 0.95 0.9];
@@ -45,7 +45,7 @@ function [] = simulationMain(app)
     normalizedData = NormalizeData(rawData, planeSize*planeSize, population);
     isoStates = floor(startIsolationStates * planeSize * planeSize);
 
-    lethality = rawData.deaths(end)/(rawData.deaths(end) + rawData.confirmed(end))/5;
+    lethality = rawData.deaths(end)/(rawData.deaths(end) + rawData.confirmed(end))/7;
     recoveryChance = rawData.recovered(end)/(rawData.confirmed(end));
     startTestedProcent = floor(normalizedData.tests(end))/(planeSize*planeSize);
 
@@ -61,7 +61,7 @@ function [] = simulationMain(app)
     for simulation = 1 : numberOfSimulations
     normalizedData = NormalizeData(rawData, planeSize*planeSize, population);
     isoStates = floor(startIsolationStates * planeSize * planeSize);
-    lethality = rawData.deaths(end)/(rawData.deaths(end) + rawData.confirmed(end))/5;
+    lethality = rawData.deaths(end)/(rawData.deaths(end) + rawData.confirmed(end))/10;
     recoveryChance = rawData.recovered(end)/(rawData.confirmed(end));
     simPlane = CreateSimulationPlane(planeSize, normalizedData.confirmed(end), normalizedData.deaths(end), isoStates, startHealth);
     testedProcent = startTestedProcent;
@@ -143,12 +143,12 @@ function [] = simulationMain(app)
 
     subplot(2, 3, 2)
     plot(iterations, deaths)
-    plot(iterations, deaths,'b','Parent', app.CAdeathsnum)
+    plot(iterations, deaths*population/(planeSize * planeSize),'b','Parent', app.CAdeathsnum)
     title("Deaths")
 
     subplot(2, 3, 3)
     plot(iterations, recovered)
-    plot(iterations, recovered,'b','Parent', app.CArecnum)
+    plot(iterations, recovered*population/(planeSize * planeSize),'b','Parent', app.CArecnum)
     title("Recovered")
 
     subplot(2, 3, 4)
