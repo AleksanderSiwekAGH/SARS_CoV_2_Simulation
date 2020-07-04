@@ -40,7 +40,7 @@ D0=app.D0.Value;
 % lt=[0.01 0.1 100]; % wskaźnik wyleczeń osób ze szpitala(zależy od czasu)
 %ft=[0.001 0.01 30]; %śmiertelność(zależy od czasu)
 
-testRate = app.ModelTestRate.Value; %wykorzystywane w sterowaniu
+testRate = app.ModelTestRate.Value/100; %wykorzystywane w sterowaniu
 a=app.a.Value; %wskaźnik zmiany zachowania na niestosowanie środków ochrony
 b=app.b.Value; %wskaźnik zmiany zachowania na stosowanie środków ochrony
 alfa=app.alfa.Value; %wskaźnik zachorowania osoby która nie stosowała środków ochrony

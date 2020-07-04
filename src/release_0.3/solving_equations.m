@@ -89,7 +89,7 @@ end
 
 function [a, b] = countAandB(testRate, infected, maxPop)
     T = 0.08;
-    fun = @(t) 0.9 - exp(-t/T);
-    a = fun(testRate*infected/maxPop);
-    b = 1 - a;
+    fun = @(t) 0.9 - 0.8*exp(-t/T);
+    b = fun(testRate*infected/maxPop);
+    a = 1 - b;
 end
