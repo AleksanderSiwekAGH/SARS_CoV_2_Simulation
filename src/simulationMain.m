@@ -10,7 +10,7 @@ function [] = simulationMain(app)
     numberOfSimulations = app.NumberOfSimulationsEditField.Value;
     numberOfSimulationSteps = app.NumberOfSimulationStepsEditField.Value;
 
-    population = 38000000;
+    population = 5368000;
     rawData = readtable("Norway_coronaVirusData_utf8.csv");
     startInfectiousness = 0.04;
 
@@ -72,7 +72,7 @@ function [] = simulationMain(app)
             [organizing trash] = size(find(simPlane.isolationState == 4));
 
             infectiousness = startInfectiousness - (protect * protectingMult + organizing *organizingMult)
-            if(mod(iteration, 8) == 1)
+            if(mod(iteration, 2) == 1)
                 DisplaySimGrid(simPlane, planeSize, iteration, dispSize);
             end
 
