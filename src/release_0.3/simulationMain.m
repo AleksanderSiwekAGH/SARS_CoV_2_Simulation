@@ -12,7 +12,7 @@ function [] = simulationMain(app)
 
     population = 38000000;
     rawData = readtable("Norway_coronaVirusData_utf8.csv");
-    startInfectiousness = 0.05;
+    startInfectiousness = 0.04;
 
     startIsolationStates = [0.76 0.19 0.02 0.005 0.005];
     isolationMults = [1 0.5 0.2 0.95 0.9];
