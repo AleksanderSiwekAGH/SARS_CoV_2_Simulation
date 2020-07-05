@@ -90,17 +90,25 @@ fFun=@(x,t) x(1).*exp(-(x(2)*(t-x(3))).^2);
 % plot(t, REC);
 
 totalInfected = INF + IAS + REC + Q;
-plot(t, NSM, 'Parent', app.AxesModelNSM, 'LineWidth', 1.5);
-plot(t, SP, 'Parent', app.AxesModelSP, 'LineWidth', 1.5);
-plot(t, INF, 'Parent', app.AxesModelINF, 'LineWidth', 1.5)
-plot(t, IAS, 'Parent', app.AxesModelIAS, 'LineWidth', 1.5);
-plot(t, Q, 'Parent', app.AxesModelQ, 'LineWidth', 1.5);
-plot(t, INH, 'Parent', app.AxesModelINH, 'LineWidth', 1.5);
-plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5);
-plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5);
-plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5);
+plot(t, NSM, 'Parent', app.AxesModelNSM, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, SP, 'Parent', app.AxesModelSP, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, INF, 'Parent', app.AxesModelINF, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100))
+plot(t, IAS, 'Parent', app.AxesModelIAS, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, Q, 'Parent', app.AxesModelQ, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, INH, 'Parent', app.AxesModelINH, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 
-
+legend(app.AxesModelNSM, 'show');
+legend(app.AxesModelSP, 'show');
+legend(app.AxesModelINF, 'show');
+legend(app.AxesModelIAS, 'show');
+legend(app.AxesModelQ, 'show');
+legend(app.AxesModelINH, 'show');
+legend(app.AxesModelTotalINF, 'show');
+legend(app.AxesModelREC, 'show');
+legend(app.AxesModelD, 'show');
 
 end
 
