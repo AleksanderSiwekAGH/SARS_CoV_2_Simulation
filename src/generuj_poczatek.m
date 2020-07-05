@@ -14,7 +14,7 @@ stan_poczatkowy = zeros(rozmiar,rozmiar);
 
 files = {};
 for stan=1:51
-    file_name = 'Stany_USA/' + usa_states(stan) + '.txt';
+    file_name = usa_states(stan) + '.txt';
     state_matrix = importdata(file_name,',');
     files = [files,state_matrix];
 end
