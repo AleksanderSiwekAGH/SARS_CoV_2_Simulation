@@ -89,10 +89,16 @@ fFun=@(x,t) x(1).*exp(-(x(2)*(t-x(3))).^2);
 % figure;
 % plot(t, REC);
 
-plot(t, D, 'Parent', app.AxesModelDead, 'LineWidth', 1.5);
-% plot(t, totalInfected, 'Parent', app.AxesModelInfected, 'LineWidth', 1.5);
-plot(t, INF, 'Parent', app.AxesModelInfected, 'LineWidth', 1.5)
-plot(t, REC, 'Parent', app.AxesModelRecovered, 'LineWidth', 1.5);
+totalInfected = INF + IAS + REC + Q;
+plot(t, NSM, 'Parent', app.AxesModelNSM, 'LineWidth', 1.5);
+plot(t, SP, 'Parent', app.AxesModelSP, 'LineWidth', 1.5);
+plot(t, INF, 'Parent', app.AxesModelINF, 'LineWidth', 1.5)
+plot(t, IAS, 'Parent', app.AxesModelIAS, 'LineWidth', 1.5);
+plot(t, Q, 'Parent', app.AxesModelQ, 'LineWidth', 1.5);
+plot(t, INH, 'Parent', app.AxesModelINH, 'LineWidth', 1.5);
+plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5);
+plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5);
+plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5);
 
 
 
