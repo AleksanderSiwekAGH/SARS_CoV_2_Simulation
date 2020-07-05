@@ -100,15 +100,15 @@ plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5, 'Displ
 plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 
-legend(app.AxesModelNSM, 'show', 'FontSize', 18);
-legend(app.AxesModelSP, 'show', 'FontSize', 18);
-legend(app.AxesModelINF, 'show', 'FontSize', 18);
-legend(app.AxesModelIAS, 'show', 'FontSize', 18);
-legend(app.AxesModelQ, 'show', 'FontSize', 18);
-legend(app.AxesModelINH, 'show', 'FontSize', 18);
-legend(app.AxesModelTotalINF, 'show', 'FontSize', 18);
-legend(app.AxesModelREC, 'show', 'FontSize', 18);
-legend(app.AxesModelD, 'show', 'FontSize', 18);
+legend(app.AxesModelNSM, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelSP, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelINF, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelIAS, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelQ, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelINH, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelTotalINF, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelREC, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelD, 'show', 'FontSize', 18, 'Location', 'best');
 
 end
 
