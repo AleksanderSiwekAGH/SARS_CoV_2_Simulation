@@ -89,12 +89,26 @@ fFun=@(x,t) x(1).*exp(-(x(2)*(t-x(3))).^2);
 % figure;
 % plot(t, REC);
 
-plot(t, D, 'Parent', app.AxesModelDead, 'LineWidth', 1.5);
-% plot(t, totalInfected, 'Parent', app.AxesModelInfected, 'LineWidth', 1.5);
-plot(t, INF, 'Parent', app.AxesModelInfected, 'LineWidth', 1.5)
-plot(t, REC, 'Parent', app.AxesModelRecovered, 'LineWidth', 1.5);
+totalInfected = INF + IAS + REC + Q;
+plot(t, NSM, 'Parent', app.AxesModelNSM, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, SP, 'Parent', app.AxesModelSP, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, INF, 'Parent', app.AxesModelINF, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100))
+plot(t, IAS, 'Parent', app.AxesModelIAS, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, Q, 'Parent', app.AxesModelQ, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, INH, 'Parent', app.AxesModelINH, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
+plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 
-
+legend(app.AxesModelNSM, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelSP, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelINF, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelIAS, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelQ, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelINH, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelTotalINF, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelREC, 'show', 'FontSize', 18, 'Location', 'best');
+legend(app.AxesModelD, 'show', 'FontSize', 18, 'Location', 'best');
 
 end
 

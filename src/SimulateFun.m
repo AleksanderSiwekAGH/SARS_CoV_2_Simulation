@@ -338,7 +338,7 @@ hold(app.AxesFrance3, 'on');
 plot(days, totalRecovered, 'LineWidth', 1, 'Parent', f6);
 plot(days, totalDeaths, 'LineWidth', 1, 'Parent', f6);
 plot(days, totalConfirmed, 'LineWidth', 1, 'Parent', f6);
-% legend('Active', 'Recovered', 'Deaths', 'Confirmed');
+legend(f6, 'Active', 'Recovered', 'Deaths', 'Confirmed');
 % xlabel('Dzień');
 % ylabel('Wartość');
 
