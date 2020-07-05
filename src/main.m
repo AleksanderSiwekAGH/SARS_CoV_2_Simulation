@@ -1,6 +1,7 @@
+function [] = main(app)
+
 close all;
-clear all;
-system('python Python_workspace/generate_files.py');
+%system('python C:/Users/Kamil0232/Desktop/SARS_CoV_2_Simulation/src/release_0.3/generate_files.py');
 usa = imread('states_square_no_borders.jpg');
 usa = rgb2gray(usa);
 [x,y] = size(usa);
@@ -35,7 +36,8 @@ epidemia = zeros(rozmiar, rozmiar);
 [epidemia, mapa_stanow_usa] = generuj_poczatek('states_square.jpg',rozmiar);
 epidemia = transpose(epidemia);
 mapa_stanow_usa = transpose(mapa_stanow_usa);
-liczbaCykli = 10; 
+%liczbaCykli = 10; 
+liczbaCykli = app.LiczbacykliUSAEditField.Value;
 [rozmiar_x, rozmiar_y] = size(epidemia);
 [country_x, country_y] = find(matrix);
 
@@ -68,6 +70,18 @@ for n=1:liczbaCykli
     tablica_stanow_usa{31} = tablica_stanow_usa{31} + tablica_stanow_usa{26}; %obsługa stanów USA rozbitych na dwie części przez indksację 
     tablica_stanow_usa{42} = tablica_stanow_usa{42} + tablica_stanow_usa{41};
     tablica_stanow_usa{43} = tablica_stanow_usa{43} + tablica_stanow_usa{45};
+    chorzy = {};
+    zdrowi = {};
+    wyzdrowiali = {};
+    martwi = {};
+    chorzy = tworzenie_wiersza(tablica_stanow_usa,1);
+    zdrowi = tworzenie_wiersza(tablica_stanow_usa,2);
+    wyzdrowiali = tworzenie_wiersza(tablica_stanow_usa,3);
+    martwi = tworzenie_wiersza(tablica_stanow_usa,4);
+    app.UITable.Data = [chorzy;zdrowi;wyzdrowiali;martwi];
+   
+    
+    
     [row_ill,col_ill] = find(epidemia == 1 | epidemia == 2 | epidemia == 3 | epidemia == 4 | epidemia == 8 | epidemia == 11 | epidemia == 14 | epidemia == 16);
     [row_health, col_health] = find(epidemia == 6 | epidemia == 7 | epidemia == 10 | epidemia == 12 | epidemia == 13 | epidemia == 17);
     [row_recovered, col_recovered] = find(epidemia == 5 | epidemia == 9 | epidemia == 15 | epidemia == 19);
@@ -85,12 +99,16 @@ for n=1:liczbaCykli
     disp('Cykl:');
     disp(n);
     disp('Zdrowi:');
+    app.ZdrowiEditField.Value = suma(1,2);
     disp(suma(1,2));
     disp('Chorzy:');
+    app.ChorzyEditField.Value = suma(1,1);
     disp(suma(1,1));
     disp('Wyzdrowiali:');
+    app.WyzdrowialiEditField.Value = suma(1,3);
     disp(suma(1,3));
     disp('Martwi:');
+    app.ZmarliEditField.Value = suma(1,4);
     disp(suma(1,4));
     for back_x=1:rozmiar_x
         for back_y=1:rozmiar_y
@@ -112,9 +130,9 @@ for n=1:liczbaCykli
     hold on;
     plot(row_black,rozmiar_x-col_black+1,'.','Marker', 'o', 'MarkerFaceColor', 'k', 'Color', 'k', 'MarkerSize', 1);
     axis([1 rozmiar_x 1 rozmiar_x]);
-    title('COVID-19');
+    title(['COVID-19 Cykl:' num2str(n)]);
     daspect([1,1,1])    
-    text(2,2.5,['cykl ' num2str(n)]);
+    %text(2,2.5,['cykl ' num2str(n)]);
     hold off;
     saveas(gcf,['cykl_' num2str(n)],'pdf')
     kolejna= zeros(rozmiar_x,rozmiar_x); 
@@ -137,5 +155,7 @@ for n=1:liczbaCykli
          disp('FATAL ERROR!');
         break;
     end
+
+end
 
 end
