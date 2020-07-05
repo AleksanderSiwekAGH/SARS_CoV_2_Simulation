@@ -47,7 +47,7 @@ function [] = simulationMain(app)
 
     lethality = rawData.deaths(end)/(rawData.deaths(end) + rawData.confirmed(end))/7;
     recoveryChance = rawData.recovered(end)/(rawData.confirmed(end));
-    startTestedProcent = floor(normalizedData.tests(end))/(planeSize*planeSize);
+    %startTestedProcent = floor(normalizedData.tests(end))/(planeSize*planeSize);
 
     confirmed(1) = [normalizedData.confirmed(end)];
     deaths(1) = [normalizedData.deaths(end)];
