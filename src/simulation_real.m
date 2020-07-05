@@ -100,15 +100,15 @@ plot(t, totalInfected, 'Parent', app.AxesModelTotalINF, 'LineWidth', 1.5, 'Displ
 plot(t, REC, 'Parent', app.AxesModelREC, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 plot(t, D, 'Parent', app.AxesModelD, 'LineWidth', 1.5, 'DisplayName', sprintf("Test rate: %d", testRate*100));
 
-legend(app.AxesModelNSM, 'show');
-legend(app.AxesModelSP, 'show');
-legend(app.AxesModelINF, 'show');
-legend(app.AxesModelIAS, 'show');
-legend(app.AxesModelQ, 'show');
-legend(app.AxesModelINH, 'show');
-legend(app.AxesModelTotalINF, 'show');
-legend(app.AxesModelREC, 'show');
-legend(app.AxesModelD, 'show');
+legend(app.AxesModelNSM, 'show', 'FontSize', 18);
+legend(app.AxesModelSP, 'show', 'FontSize', 18);
+legend(app.AxesModelINF, 'show', 'FontSize', 18);
+legend(app.AxesModelIAS, 'show', 'FontSize', 18);
+legend(app.AxesModelQ, 'show', 'FontSize', 18);
+legend(app.AxesModelINH, 'show', 'FontSize', 18);
+legend(app.AxesModelTotalINF, 'show', 'FontSize', 18);
+legend(app.AxesModelREC, 'show', 'FontSize', 18);
+legend(app.AxesModelD, 'show', 'FontSize', 18);
 
 end
 
