@@ -60,7 +60,7 @@ function [newSimPlane, newFreeBeds, isDead, newIll, isRecovered] = CheckState(si
                     end
                 end
                 
-                if(rand < recoveryChance/5)
+                if(rand < recoveryChance/4)
                         simPlane.healthState(x, y) = 0;
                         simPlane.health(x, y) = 14;
                         simPlane.isolationState(x, y) = 1;
@@ -76,7 +76,7 @@ function [newSimPlane, newFreeBeds, isDead, newIll, isRecovered] = CheckState(si
                 [simPlane, newIll] = Infect(simPlane, x, y, avDaysToSymptoms, sigma, infectiousness, planeSize, chanceToGetSickAgainMul); 
 
                 if(simPlane.health(x, y) <= 0)
-                    if(rand < lethality) %zabijanie pacjenta
+                    if(rand < lethality/4) %zabijanie pacjenta
                         simPlane.isDead(x, y) = 1;
                         simPlane.healthState(x, y) = 4;
                         simPlane.isolationState(x, y) = 3;
@@ -84,7 +84,7 @@ function [newSimPlane, newFreeBeds, isDead, newIll, isRecovered] = CheckState(si
                         isDead = 1;
                     end
 
-                    if(rand < recoveryChance)
+                    if(rand < recoveryChance*2)
                         simPlane.healthState(x, y) = 0;
                         simPlane.health(x, y) = 14;
                         simPlane.isolationState(x, y) = 1;
